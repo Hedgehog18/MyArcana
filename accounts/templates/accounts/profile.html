@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Профіль користувача</h2>
+  <p>Вітаємо, {{ request.user.username }}!</p>
+  <p>Ваш email: {{ request.user.email }}</p>
+
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Вийти</button>
+  </form>
+{% endblock %}
