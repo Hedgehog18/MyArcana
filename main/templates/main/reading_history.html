@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block title %}Історія передбачень{% endblock %}
+
+{% block content %}
+<h2>Моя історія передбачень</h2>
+
+{% if history %}
+    <ul class="reading-list">
+        {% for reading in history %}
+            <li class="reading-item">
+                <p><strong>Дата і час:</strong> {{ reading.drawn_at|date:"d.m.Y H:i" }}</p>
+
+                <p>
+                    <strong>Назва передбачення:</strong>
+                    <span class="card-info-inline">
+                        <img src="{{ reading.card.image.url }}" alt="{{ reading.card.name }}" class="card-thumbnail">
+                        Карта дня — {{ reading.card.name }}
+                        {% if reading.is_reversed %}
+                            <span class="card-name-reversed">(перевернута)</span>
+                        {% endif %}
+                    </span>
+                </p>
+
+                <p><strong>Значення карти:</strong>
+                    {{ reading.short_description }}
+                </p>
+
+                <p><strong>Передбачення на день:</strong> {{ reading.ai_prediction }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Наразі у вас немає збережених передбачень.</p>
+{% endif %}
+
+<!-- Кнопка "Повернутись" -->
+<div style="text-align: center; margin-top: 2em;">
+    <a href="{% url 'dashboard' %}" class="btn-primary">⬅ Повернутись</a>
+</div>
+{% endblock %}

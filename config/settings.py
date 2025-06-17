@@ -1,6 +1,18 @@
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 # Для відображення повідомлень Django
 from django.contrib.messages import constants as messages
+
+# Шлях до .env
+env_path = Path(__file__).resolve().parent.parent / '.env'
+
+load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent / '.env')
+
+
+
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,6 +32,7 @@ INSTALLED_APPS = [
     'accounts',
     'divination',
     'main',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +86,7 @@ STATIC_URL = 'static/'
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = '/accounts/profile/'
+LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
@@ -97,3 +110,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST_PASSWORD = 'your_app_password'
 DEFAULT_FROM_EMAIL = 'noreply@myarcana.online'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

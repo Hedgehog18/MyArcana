@@ -1,0 +1,352 @@
+
+/* === Базові стилі === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: url('../../images/mystical_background.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* === Хедер === */
+.site-header {
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.site-header img.header-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.header-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 250px;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 2em;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.site-header h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.5rem;
+    margin: 0;
+    color: #fff;
+}
+
+.header-overlay form {
+    pointer-events: all;
+}
+
+header a, header button {
+    color: white;
+    margin-left: 1em;
+    text-decoration: none;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+header a:hover, header button:hover {
+    color: #b39ddb;
+}
+
+main {
+    padding: 2em;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffffee;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+}
+
+/* === Форми === */
+form {
+    max-width: 400px;
+    margin-top: 1em;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.25em;
+    font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button,
+.reveal-button,
+.btn-primary,
+a.btn-primary {
+    display: inline-block;
+    padding: 0.6em 1.5em;
+    background-color: #4a148c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    text-align: center;
+}
+
+a.btn-primary:hover {
+    background-color: #3a0f6a;
+}
+
+.btn-logout {
+    background-color: #d32f2f;
+    border-radius: 6px;
+    padding: 0.5em 1.2em;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+/* === Карта дня === */
+.card-day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card-reading-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.card-info-block,
+.card-prediction-block {
+    flex: 1 1 48%;
+    padding: 20px;
+    border: 2px solid #6b5b95;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    color: #222;
+    min-height: 100%;
+}
+
+.card-description p {
+    color: #222;
+}
+
+.card-flip-container {
+    perspective: 1000px;
+    width: 200px;
+    height: 300px;
+    margin-bottom: 1rem;
+}
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card-flip-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-flip-front,
+.card-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+}
+
+.card-flip-front img,
+.card-flip-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card-flip-back {
+    transform: rotateY(180deg);
+}
+
+.reveal-button {
+    margin-top: 1rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #6a4caf;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.tarot-image.reversed {
+    transform: rotate(180deg);
+}
+
+.card-description {
+    margin-top: 1rem;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+}
+
+/* === Історія === */
+.reading-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reading-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+/* === Підказка для карт === */
+.card-tooltip {
+    position: relative;
+    color: #6a1b9a;
+    text-decoration: underline;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 80vh;
+    padding: 20px 0;
+    gap: 30px;
+}
+
+.dashboard-sidebar {
+    width: 220px;
+    background-color: #e0d7f7;
+    padding: 20px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.menu-section {
+    margin-bottom: 40px;
+}
+
+.menu-section h3 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #4a148c;
+}
+
+.menu-link {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #7b1fa2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.menu-link:last-child {
+    margin-bottom: 0;
+    background-color: #512da8;
+}
+
+.menu-link:hover {
+    background-color: #4a148c;
+}
+
+@media (max-width: 768px) {
+    .card-reading-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-info-block,
+    .card-prediction-block {
+        width: 100%;
+    }
+}
+
+.card-name-reversed {
+    font-weight: normal;
+    font-style: italic;
+    color: #6a1b9a;
+    margin-left: 8px;
+}
+
+.card-thumbnail {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.card-info-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
