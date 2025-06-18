@@ -3,6 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class TarotCard(models.Model):
     ARCANA_CHOICES = [
         ('Major', 'Старші аркани'),
