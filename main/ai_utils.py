@@ -1,11 +1,11 @@
 # ai_utils.py
 
-import os
 from openai import OpenAI
 from openai import OpenAIError
 
 # Клієнт безпосередньо зчитує ключ з .env або змінної середовища
 client = OpenAI()
+
 
 def generate_tarot_prediction(card_name, card_description, is_reversed):
     """

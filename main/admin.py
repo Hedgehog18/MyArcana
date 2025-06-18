@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import TarotCard, ReadingHistory
 
+
 @admin.register(TarotCard)
 class TarotCardAdmin(admin.ModelAdmin):
     list_display = ('name', 'arcana', 'suit', 'number')

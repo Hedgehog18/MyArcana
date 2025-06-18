@@ -1,20 +1,12 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-# Для відображення повідомлень Django
 from django.contrib.messages import constants as messages
 
-# Шлях до .env
-env_path = Path(__file__).resolve().parent.parent / '.env'
-
-load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent / '.env')
-
-
-
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(dotenv_path=BASE_DIR / '.env')
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-temp-key'
 
