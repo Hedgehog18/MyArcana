@@ -6,13 +6,24 @@
 
 <form method="post" style="max-width: 360px; margin: 2em auto; background: white; padding: 2em; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     {% csrf_token %}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <div style="color: #d33; font-size: 0.9em; margin-bottom: 0.8em;">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
     <div style="margin-bottom: 1.2em;">
         <label for="{{ form.username.id_for_label }}" style="display:block; margin-bottom:0.3em; font-weight:600;">Логін</label>
         {{ form.username|add_class:"input-field" }}
+        {% for error in form.username.errors %}
+            <div style="color: #d33; font-size: 0.9em;">{{ error }}</div>
+        {% endfor %}
     </div>
     <div style="margin-bottom: 1.5em;">
         <label for="{{ form.password.id_for_label }}" style="display:block; margin-bottom:0.3em; font-weight:600;">Пароль</label>
         {{ form.password|add_class:"input-field" }}
+        {% for error in form.password.errors %}
+            <div style="color: #d33; font-size: 0.9em;">{{ error }}</div>
+        {% endfor %}
     </div>
     <button type="submit" style="width: 100%; padding: 0.7em; background-color:#4a148c; color:white; border:none; border-radius: 4px; font-weight:700; cursor:pointer;">Увійти</button>
 </form>
