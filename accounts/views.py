@@ -22,7 +22,7 @@ def register(request):
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Активуйте свій акаунт MyArcana.online'
-            message = render_to_string('accounts/acc_active_email.html', {
+            message = render_to_string('accounts/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
