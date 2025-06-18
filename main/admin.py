@@ -5,15 +5,15 @@ from .models import TarotCard, ReadingHistory
 class TarotCardAdmin(admin.ModelAdmin):
     list_display = ('name', 'arcana', 'suit', 'number')
     list_filter = ('arcana', 'suit')
-    search_fields = ('name', 'description', 'full_description')
+    search_fields = ('name', 'short_description', 'full_description')
     fields = (
         'name',
         'arcana',
         'suit',
         'number',
-        'description',
+        'short_description',
         'full_description',
-        'reversed_description',
+        'short_description_reversed',
         'full_description_reversed',
         'image',
     )
