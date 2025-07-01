@@ -55,4 +55,4 @@
 
 - [Документація Django](https://docs.djangoproject.com/en/5.2/)
 - [Створення віртуального середовища в Windows](https://docs.python.org/3/library/venv.html)
-- 
+  
