@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MyArcana.online{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+<header class="site-header">
+    <img src="{% static 'images/header_banner.png' %}" alt="Банер" class="header-banner">
+    <div class="header-overlay">
+        <h1></h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-logout">Вийти</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Увійти</a>
+                <a href="{% url 'register' %}">Реєстрація</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+{% if messages %}
+<div class="alerts">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>

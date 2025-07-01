@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="card-day-container">
+  <div class="card-reading-wrapper">
+    <!-- Блок з картою та описом -->
+    <div class="card-info-block">
+      <div class="card-flip-container">
+        <div class="card-flip-inner {% if already_drawn %}flipped{% endif %}">
+          <div class="card-flip-front">
+            <img src="{% static 'images/card_back.png' %}" alt="Карта сорочкою">
+          </div>
+          <div class="card-flip-back">
+            <img src="{{ card.image.url }}" alt="{{ card.name }}" class="tarot-image {% if is_reversed %}reversed{% endif %}">
+          </div>
+        </div>
+      </div>
+
+      {% if not already_drawn %}
+        <form method="post" style="margin-top: 1rem;">
+          {% csrf_token %}
+          <button type="submit" class="reveal-button">Відкрити карту дня</button>
+        </form>
+      {% else %}
+        <h3 style="margin-top: 1.5rem;">
+          {{ card.name }}
+          {% if is_reversed %}
+            <span class="card-name-reversed">(перевернута)</span>
+          {% endif %}
+        </h3>
+
+        <div class="card-description">
+          <p><strong>Значення карти:</strong> {{ short_description }}</p>
+          <p><strong>Короткий опис:</strong> {{ full_description }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if ai_prediction %}
+        <div class="card-prediction-block">
+        <h3>Передбачення на сьогодні:</h3>
+        <p>{{ ai_prediction }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+
+  {% if already_drawn %}
+    <div style="margin-top: 2rem;">
+      <a href="{% url 'dashboard' %}" class="btn-primary">⮜ Повернутись</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

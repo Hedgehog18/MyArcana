@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+
+    <nav class="dashboard-sidebar">
+        <div class="menu-section">
+            <h3>Розклади Таро</h3>
+            <a href="{% url 'card_of_the_day' %}" class="menu-link">Карта дня</a>
+            <a href="{% url 'reading_history' %}" class="menu-link">Моя історія передбачень</a>
+        </div>
+
+        <div class="menu-section">
+            <h3>Користувач</h3>
+            <a href="{% url 'profile' %}" class="menu-link">Профіль</a>
+            <a href="#" class="menu-link">Підписка</a>
+        </div>
+    </nav>
+
+    <section class="dashboard-main">
+        <h2>Вітаємо, {{ user.username }}!</h2>
+        <p>Обирайте опцію в меню зліва, щоб почати роботу.</p>
+    </section>
+
+</div>
+{% endblock %}

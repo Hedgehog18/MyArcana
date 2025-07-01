@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto; padding: 2rem; background-color: #f3e5f5; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+    <h2 style="text-align: center;">👤 Мій профіль</h2>
+
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+        {% if user.userprofile.avatar %}
+            <img src="{{ user.userprofile.avatar.url }}" alt="Аватар" style="height: 100px; border-radius: 50%;">
+        {% else %}
+            <p><em>Аватар не встановлено</em></p>
+        {% endif %}
+    </div>
+
+    <form method="post" enctype="multipart/form-data" style="margin-bottom: 2rem;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding: 0.5rem 1rem; background: #4a148c; color: white; border: none; border-radius: 4px;">Зберегти</button>
+    </form>
+
+    <hr>
+
+    <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Дата реєстрації:</strong> {{ registration_date }}</p>
+    <p><strong>Днів з моменту реєстрації:</strong> {{ days_since_registration }}</p>
+
+</div>
+{% endblock %}
