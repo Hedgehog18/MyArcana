@@ -64,22 +64,23 @@ def profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
-        # Якщо прийшли дані для аватара (base64)
+        # якщо прийшли дані для аватара
         cropped_data = request.POST.get('cropped_avatar_data')
         if cropped_data and cropped_data.startswith('data:image'):
-            format, imgstr = cropped_data.split(';base64,')
-            ext = format.split('/')[-1]
+            old_avatar = user_profile.avatar.name if user_profile.avatar else None
 
-            # видаляємо старий файл
-            if user_profile.avatar:
-                user_profile.avatar.delete(save=False)
-
+            data_format, imgstr = cropped_data.split(';base64,')
+            ext = data_format.split('/')[-1]
             file_name = f'avatar_{request.user.id}.{ext}'
             user_profile.avatar.save(file_name, ContentFile(base64.b64decode(imgstr)), save=True)
+
+            if old_avatar and old_avatar != user_profile.avatar.name:
+                user_profile.avatar.storage.delete(old_avatar)
+
             messages.success(request, 'avatar_updated')
             return redirect('profile')
 
-        # Якщо прийшли дані для дати
+        # якщо прийшли дані для дати
         birth_date = request.POST.get('birth_date')
         if birth_date:
             if str(user_profile.birth_date) != birth_date:
@@ -97,6 +98,7 @@ def profile(request):
         'registration_date': registration_date,
         'days_since_registration': days_since_registration
     })
+
 
 
 class CustomLoginView(LoginView):

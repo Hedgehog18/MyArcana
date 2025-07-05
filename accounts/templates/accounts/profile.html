@@ -13,6 +13,32 @@
              style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
     </div>
 
+    <!-- Блок повідомлень -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.message == 'avatar_updated' %}
+            <div class="fade-message" style="
+                background-color: #e8f5e9;
+                color: #2e7d32;
+                padding: 0.5rem; margin-bottom: 1rem;
+                border: 1px solid #c8e6c9;
+                border-radius: 4px;">
+                Аватар успішно оновлений!
+            </div>
+            {% elif message.message == 'birthdate_updated' %}
+            <div class="fade-message" style="
+                background-color: #e3f2fd;
+                color: #1565c0;
+                padding: 0.5rem; margin-bottom: 1rem;
+                border: 1px solid #90caf9;
+                border-radius: 4px;">
+                Дата народження успішно оновлена!
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
     <div style="margin-bottom: 2rem;">
         <label class="btn-avatar-upload" id="avatarButton">
             Змінити аватар
@@ -25,7 +51,7 @@
     <div style="text-align: left; margin-bottom: 2rem;">
         <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
 
-        <p><strong>Дата народження:</strong>
+        <p><strong><label for="id_birth_date">Дата народження:</label></strong>
             <span id="birthDateDisplay">
                 {% if user.userprofile.birth_date %}
                     {{ user.userprofile.birth_date|date:"d.m.Y" }}
@@ -86,6 +112,14 @@
 }
 .save-button:hover {
     background: #6a1b9a;
+}
+.fade-message {
+    animation: fadeOut 5s forwards;
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
 }
 </style>
 {% endblock %}
