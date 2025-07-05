@@ -2,12 +2,11 @@
 
 from openai import OpenAI
 from openai import OpenAIError
+from openai.types.chat import ChatCompletionUserMessageParam, ChatCompletionSystemMessageParam
 
-# Клієнт безпосередньо зчитує ключ з .env або змінної середовища
 client = OpenAI()
 
-
-def generate_tarot_prediction(card_name, card_description, is_reversed):
+def generate_tarot_prediction(card_name: str, card_description: str, is_reversed: bool) -> str:
     """
     Генерує передбачення на основі карти Таро, її опису та положення.
     """
@@ -23,17 +22,19 @@ def generate_tarot_prediction(card_name, card_description, is_reversed):
         f"Не використовуйте звернень типу 'мій шукачу', 'друже', 'ти'. "
         f"Текст має бути приблизно 100 слів, доброзичливим і натхненним, "
         f"без фамільярності, без панібратства. "
-        f"Після складання передбачення, автоматично перевірте його на стилістичні та граматичні помилки, "
-        f"і виправте їх, щоб текст звучав природно українською."
+        f"Після складання передбачення, автоматично перевірте його на стилістичні "
+        f"та граматичні помилки українською мовою та виправте їх."
     )
+
+    messages: list[ChatCompletionSystemMessageParam | ChatCompletionUserMessageParam] = [
+        ChatCompletionSystemMessageParam(role="system", content="Ви містичний гід, який створює езотеричні передбачення."),
+        ChatCompletionUserMessageParam(role="user", content=prompt)
+    ]
 
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "Ти містичний гід, який створює езотеричні передбачення."},
-                {"role": "user", "content": prompt}
-            ],
+            messages=messages,
             temperature=0.7,
             max_tokens=400
         )
