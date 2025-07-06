@@ -350,3 +350,35 @@ a.btn-primary:hover {
     align-items: center;
     gap: 10px;
 }
+
+.btn-avatar-upload {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #6a1b9a;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn-avatar-upload:hover {
+    background: #8e24aa;
+}
+.save-button {
+    padding: 0.4rem 0.8rem;
+    background: #4a148c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.save-button:hover {
+    background: #6a1b9a;
+}
+.fade-message {
+    animation: fadeOut 5s forwards;
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
