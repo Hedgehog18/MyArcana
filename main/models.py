@@ -46,3 +46,26 @@ class ReadingHistory(models.Model):
 
     def __str__(self):
         return f"{self.card.name} ({'перевернута' if self.is_reversed else 'пряма'}) - {self.drawn_at.date()}"
+
+
+class Rune(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    short_description = models.TextField()
+    full_description = models.TextField()
+    short_description_reversed = models.TextField()
+    full_description_reversed = models.TextField()
+    image = models.ImageField(upload_to='runes/')
+
+    def __str__(self):
+        return self.name
+
+
+class RuneOfTheDay(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rune = models.ForeignKey(Rune, on_delete=models.CASCADE)
+    drawn_at = models.DateTimeField(auto_now_add=True)
+    is_reversed = models.BooleanField(default=False)
+
+    def __str__(self):
+        orientation = " (перевернута)" if self.is_reversed else ""
+        return f"{self.user.username} - {self.rune.name}{orientation} - {self.drawn_at.date()}"

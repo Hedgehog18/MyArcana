@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Fehu",
+    "short_description": "Багатство, процвітання, нові можливості.",
+    "full_description": "Руна Fehu в прямому положенні символізує матеріальний достаток, початок нових прибуткових справ, розширення можливостей для заробітку.",
+    "short_description_reversed": "Втрати, нестабільність у фінансах.",
+    "full_description_reversed": "Перевернута Fehu вказує на можливі фінансові труднощі, втрати або нестабільність.",
+    "image": "runes/fehu.jpg"
+  },
+  {
+    "name": "Uruz",
+    "short_description": "Сила, витривалість, мужність.",
+    "full_description": "Пряма Uruz говорить про фізичну та духовну силу, енергію для подолання перешкод.",
+    "short_description_reversed": "Слабкість, хвороба, втрачена можливість.",
+    "full_description_reversed": "У перевернутому положенні Uruz попереджає про втрату сили, хвороби.",
+    "image": "runes/uruz.jpg"
+  },
+  {
+    "name": "Thurisaz",
+    "short_description": "Захист, випробування, різкі зміни.",
+    "full_description": "Руна Thurisaz символізує необхідність обережності, випробування.",
+    "short_description_reversed": "Необдумані дії, конфлікти.",
+    "full_description_reversed": "Перевернута Thurisaz вказує на поспішні рішення.",
+    "image": "runes/thurisaz.jpg"
+  },
+  {
+    "name": "Ansuz",
+    "short_description": "Мудрість, спілкування, натхнення.",
+    "full_description": "Ansuz — руна знань, натхнення, передачі важливої інформації.",
+    "short_description_reversed": "Непорозуміння, брехня.",
+    "full_description_reversed": "У перевернутому положенні попереджає про дезінформацію.",
+    "image": "runes/ansuz.jpg"
+  },
+  {
+    "name": "Raidho",
+    "short_description": "Подорож, рух вперед.",
+    "full_description": "Пряма Raidho означає зміни місця або внутрішній розвиток.",
+    "short_description_reversed": "Затримки, хаос у планах.",
+    "full_description_reversed": "Перевернута Raidho — це затримки та хаос.",
+    "image": "runes/raido.jpg"
+  },
+  {
+    "name": "Kenaz",
+    "short_description": "Світло, відкриття, творчість.",
+    "full_description": "Kenaz означає розкриття потенціалу, нові ідеї.",
+    "short_description_reversed": "Втрата натхнення.",
+    "full_description_reversed": "Говорить про застій або втрату інтересу.",
+    "image": "runes/kenaz.jpg"
+  },
+  {
+    "name": "Gebo",
+    "short_description": "Партнерство, дари, баланс.",
+    "full_description": "Вказує на гармонійні стосунки, взаємність.",
+    "short_description_reversed": "Залежність.",
+    "full_description_reversed": "Може означати дисбаланс або невдячність.",
+    "image": "runes/gebo.jpg"
+  },
+  {
+    "name": "Wunjo",
+    "short_description": "Радість, задоволення.",
+    "full_description": "Пряма Wunjo приносить щастя та гармонію.",
+    "short_description_reversed": "Розчарування.",
+    "full_description_reversed": "Втрата радості або розчарування.",
+    "image": "runes/wunjo.jpg"
+  },
+  {
+    "name": "Hagalaz",
+    "short_description": "Руйнування для оновлення.",
+    "full_description": "Hagalaz — зовнішні сили, що ведуть до очищення.",
+    "short_description_reversed": "Та ж дія, посилена.",
+    "full_description_reversed": "Ще більш різке втручання долі.",
+    "image": "runes/hagalaz.jpg"
+  },
+  {
+    "name": "Nauthiz",
+    "short_description": "Обмеження, терпіння.",
+    "full_description": "Навчає терпінню, показує важливість часу.",
+    "short_description_reversed": "Самосаботаж.",
+    "full_description_reversed": "Вказує на внутрішні перепони.",
+    "image": "runes/nauthiz.jpg"
+  },
+  {
+    "name": "Isa",
+    "short_description": "Застій, пауза.",
+    "full_description": "Час для обдумування та паузи.",
+    "short_description_reversed": "Залежно від ситуації.",
+    "full_description_reversed": "Може бути або відпочинком, або затримкою.",
+    "image": "runes/isa.jpg"
+  },
+  {
+    "name": "Jera",
+    "short_description": "Результат, плоди.",
+    "full_description": "Час збору врожаю, винагорода за працю.",
+    "short_description_reversed": "Затримка результатів.",
+    "full_description_reversed": "Може означати відтермінування.",
+    "image": "runes/jera.jpg"
+  },
+  {
+    "name": "Eihwaz",
+    "short_description": "Захист, стійкість.",
+    "full_description": "Говорить про здатність протистояти труднощам.",
+    "short_description_reversed": "Нерішучість.",
+    "full_description_reversed": "Страх змін, відсутність сили волі.",
+    "image": "runes/eihwaz.jpg"
+  },
+  {
+    "name": "Perthro",
+    "short_description": "Таємниці, доля.",
+    "full_description": "Показує випадковості та приховане.",
+    "short_description_reversed": "Відкриття таємниць.",
+    "full_description_reversed": "Приховане стане явним.",
+    "image": "runes/perthro.jpg"
+  },
+  {
+    "name": "Algiz",
+    "short_description": "Охорона, інтуїція.",
+    "full_description": "Algiz — руна захисту та інтуїції.",
+    "short_description_reversed": "Небезпека.",
+    "full_description_reversed": "Вразливість, відкритість до ризиків.",
+    "image": "runes/algiz.jpg"
+  },
+  {
+    "name": "Sowilo",
+    "short_description": "Успіх, воля.",
+    "full_description": "Символізує успіх, здоров’я та силу волі.",
+    "short_description_reversed": "Внутрішні бар’єри.",
+    "full_description_reversed": "Невпевненість у власних силах.",
+    "image": "runes/sowilo.jpg"
+  },
+  {
+    "name": "Tiwaz",
+    "short_description": "Честь, справедливість.",
+    "full_description": "Символ істини та перемоги справедливості.",
+    "short_description_reversed": "Поразка.",
+    "full_description_reversed": "Втрачена віра або відсутність підтримки.",
+    "image": "runes/tiwaz.jpg"
+  },
+  {
+    "name": "Berkano",
+    "short_description": "Зростання, родина.",
+    "full_description": "Щастя в родині, ріст і розвиток.",
+    "short_description_reversed": "Проблеми в родині.",
+    "full_description_reversed": "Затримки у проєктах або труднощі в сім’ї.",
+    "image": "runes/berkano.jpg"
+  },
+  {
+    "name": "Ehwaz",
+    "short_description": "Рух, прогрес.",
+    "full_description": "Партнерство та спільна справа.",
+    "short_description_reversed": "Затримки.",
+    "full_description_reversed": "Відсутність співпраці або застій.",
+    "image": "runes/ehwaz.jpg"
+  },
+  {
+    "name": "Mannaz",
+    "short_description": "Людські стосунки.",
+    "full_description": "Підтримка від інших людей.",
+    "short_description_reversed": "Ізоляція.",
+    "full_description_reversed": "Самотність або небажання взаємодіяти.",
+    "image": "runes/mannaz.jpg"
+  },
+  {
+    "name": "Laguz",
+    "short_description": "Інтуїція, підсвідомість.",
+    "full_description": "Глибинні почуття та емоції.",
+    "short_description_reversed": "Ілюзії.",
+    "full_description_reversed": "Самообман або плутанина.",
+    "image": "runes/laguz.jpg"
+  },
+  {
+    "name": "Ingwaz",
+    "short_description": "Завершення циклу.",
+    "full_description": "Завершення старого та підготовка до нового.",
+    "short_description_reversed": "Несвоєчасність.",
+    "full_description_reversed": "Події ще не дозріли.",
+    "image": "runes/ingwaz.jpg"
+  },
+  {
+    "name": "Dagaz",
+    "short_description": "Прорив, ясність.",
+    "full_description": "Розкриття, прозріння та розвиток.",
+    "short_description_reversed": "Повільний розвиток.",
+    "full_description_reversed": "Відкладене усвідомлення.",
+    "image": "runes/dagaz.jpg"
+  },
+  {
+    "name": "Othala",
+    "short_description": "Спадщина, дім.",
+    "full_description": "Родинні традиції, власність та духовна спадщина.",
+    "short_description_reversed": "Втрата зв’язку.",
+    "full_description_reversed": "Конфлікти у спадкових питаннях.",
+    "image": "runes/othala.jpg"
+  }
+]

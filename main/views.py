@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils import timezone
 
-from .models import TarotCard, ReadingHistory
+from .models import TarotCard, ReadingHistory, Rune, RuneOfTheDay
 from .ai_utils import generate_tarot_prediction
 
 
@@ -51,6 +51,33 @@ def card_of_the_day(request):
 
     return render(request, 'main/card_of_the_day.html', context)
 
+
+# список рун
+RUNES = [
+    {"name": "Fehu", "description": "Багатство, процвітання"},
+    {"name": "Uruz", "description": "Сила, здоров’я"},
+    {"name": "Thurisaz", "description": "Захист, конфлікт"},
+    # додай інші руни
+]
+
+@login_required
+def rune_of_the_day(request):
+    today = timezone.now().date()
+    existing = RuneOfTheDay.objects.filter(user=request.user, drawn_at__date=today).first()
+
+    if existing:
+        rune = existing.rune
+        is_reversed = existing.is_reversed
+    else:
+        rune = random.choice(Rune.objects.all())
+        is_reversed = random.choice([True, False])
+        RuneOfTheDay.objects.create(user=request.user, rune=rune, is_reversed=is_reversed)
+
+    context = {
+        'rune': rune,
+        'is_reversed': is_reversed,
+    }
+    return render(request, 'main/rune_of_the_day.html', context)
 
 @login_required
 def dashboard(request):
