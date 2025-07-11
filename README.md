@@ -41,11 +41,17 @@
 
 6. **Завантаження карт Таро** (одноразово)
    ```bash
+   python manage.py load_runes main/data/runes_uk.json
+   ```
+   Команда зчитає дані з `main/data/runes_uk.json` і пов'яже їх із зображеннями з `main/data/runes`.
+
+7. **Завантаження Рун** (одноразово)
+   ```bash
    python manage.py load_tarot_cards
    ```
-   Команда зчитає дані з `main/data/tarot_cards_uk.json` і пов'яже їх із зображеннями з `main/data/cards`.
+   Команда зчитає дані з `main/data/tarot_cards_uk.json` і пов'яже їх із зображеннями з `media/runes`.
 
-7. **Запуск серверу розробки**
+8. **Запуск серверу розробки**
    ```bash
    python manage.py runserver
    ```
