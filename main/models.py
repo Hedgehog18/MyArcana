@@ -49,15 +49,27 @@ class ReadingHistory(models.Model):
 
 
 class Rune(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='runes/')
     short_description = models.TextField()
     full_description = models.TextField()
     short_description_reversed = models.TextField()
     full_description_reversed = models.TextField()
-    image = models.ImageField(upload_to='runes/')
 
     def __str__(self):
         return self.name
+
+class RuneReading(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rune = models.ForeignKey(Rune, on_delete=models.CASCADE)
+    is_reversed = models.BooleanField(default=False)
+    short_description = models.TextField()
+    full_description = models.TextField()
+    ai_prediction = models.TextField()
+    drawn_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.rune.name} - {'перевернута' if self.is_reversed else 'пряма'} - {self.drawn_at.strftime('%Y-%m-%d')}"
 
 
 class RuneOfTheDay(models.Model):
