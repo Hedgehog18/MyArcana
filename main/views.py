@@ -61,23 +61,20 @@ RUNES = [
 ]
 
 @login_required
+@login_required
 def rune_of_the_day(request):
-    today = timezone.now().date()
-    existing = RuneOfTheDay.objects.filter(user=request.user, drawn_at__date=today).first()
-
-    if existing:
-        rune = existing.rune
-        is_reversed = existing.is_reversed
-    else:
-        rune = random.choice(Rune.objects.all())
-        is_reversed = random.choice([True, False])
-        RuneOfTheDay.objects.create(user=request.user, rune=rune, is_reversed=is_reversed)
+    rune = random.choice(Rune.objects.all())
+    is_reversed = random.choice([True, False])
 
     context = {
         'rune': rune,
         'is_reversed': is_reversed,
+        'short_description': rune.short_description_reversed if is_reversed else rune.short_description,
+        'full_description': rune.full_description_reversed if is_reversed else rune.full_description,
     }
+
     return render(request, 'main/rune_of_the_day.html', context)
+
 
 @login_required
 def dashboard(request):

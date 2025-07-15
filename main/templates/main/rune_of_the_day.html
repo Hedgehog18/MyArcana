@@ -1,42 +1,37 @@
-{% extends 'main/base.html' %}
-
-{% block title %}Руна дня{% endblock %}
+{% extends "main/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="card-day-container">
-    <h2>✨ Руна дня ✨</h2>
-
-    <div class="card-reading-wrapper">
-        <div class="card-info-block">
-            <div class="card-flip-container">
-                <div class="card-flip-inner{% if is_reversed %} flipped{% endif %}">
-                    <div class="card-flip-front">
-                        <img src="{{ rune.image.url }}" alt="{{ rune.name }}" class="tarot-image{% if is_reversed %} reversed{% endif %}">
-                    </div>
-                    <div class="card-flip-back">
-                        <img src="{{ rune.image.url }}" alt="{{ rune.name }}" class="tarot-image{% if is_reversed %} reversed{% endif %}">
-                    </div>
-                </div>
-            </div>
-            <h3>{{ rune.name }}{% if is_reversed %}<span class="card-name-reversed"> (перевернута)</span>{% endif %}</h3>
+  <div class="card-reading-wrapper">
+    <div class="card-info-block">
+      <div class="card-flip-container">
+        <div class="card-flip-inner flipped">
+          <div class="card-flip-front">
+            <img src="{% static 'images/card_back.png' %}" alt="Руна сорочкою">
+          </div>
+          <div class="card-flip-back">
+            <img src="{{ rune.image.url }}" alt="{{ rune.name }}" class="tarot-image {% if is_reversed %}reversed{% endif %}">
+          </div>
         </div>
+      </div>
 
-        <div class="card-prediction-block">
-            <h4>Значення руни:</h4>
-            <div class="card-description">
-                {% if is_reversed %}
-                    <p><strong>Коротко:</strong> {{ rune.short_description_reversed }}</p>
-                    <p><strong>Повний опис:</strong> {{ rune.full_description_reversed }}</p>
-                {% else %}
-                    <p><strong>Коротко:</strong> {{ rune.short_description }}</p>
-                    <p><strong>Повний опис:</strong> {{ rune.full_description }}</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+      <h3 style="margin-top: 1.5rem;">
+        {{ rune.name }}
+        {% if is_reversed %}
+          <span class="card-name-reversed">(перевернута)</span>
+        {% endif %}
+      </h3>
 
-    <div style="margin-top: 2rem;">
-        <a href="{% url 'dashboard' %}" class="btn-primary">⮜ Повернутись</a>
+      <div class="card-description">
+        <p><strong>Значення руни:</strong> {{ short_description }}</p>
+        <p><strong>Опис:</strong> {{ full_description }}</p>
+      </div>
     </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <a href="{% url 'dashboard' %}" class="btn-primary">⮜ Повернутись</a>
+  </div>
 </div>
 {% endblock %}
