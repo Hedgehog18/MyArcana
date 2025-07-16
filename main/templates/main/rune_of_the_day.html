@@ -4,16 +4,15 @@
 {% block content %}
 <div class="card-day-container">
   <div class="card-reading-wrapper">
+    <!-- Блок з руною та описом -->
     <div class="card-info-block">
       <div class="card-flip-container">
         <div class="card-flip-inner {% if already_drawn %}flipped{% endif %}">
           <div class="card-flip-front">
-            <img src="{% static 'images/cover.jpg' %}" alt="Руна сорочкою">
+            <img src="{% static 'images/card_back.png' %}" alt="Руна сорочкою">
           </div>
           <div class="card-flip-back">
-            {% if rune %}
-              <img src="{{ rune.image.url }}" alt="{{ rune.name }}" class="tarot-image {% if is_reversed %}reversed{% endif %}">
-            {% endif %}
+            <img src="{{ rune.image.url }}" alt="{{ rune.name }}" class="{% if is_reversed %}reversed{% endif %}">
           </div>
         </div>
       </div>
@@ -32,8 +31,8 @@
         </h3>
 
         <div class="card-description">
-          <p><strong>Значення руни:</strong> {{ short_description }}</p>
-          <p><strong>Короткий опис:</strong> {{ full_description }}</p>
+          <p><strong>Ключове значення:</strong> {{ short_description }}</p>
+          <p><strong>Детальний опис:</strong> {{ full_description }}</p>
         </div>
       {% endif %}
     </div>

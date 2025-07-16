@@ -1,38 +1,35 @@
+# main/views.py
+
 import random
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils import timezone
 
 from .models import TarotCard, ReadingHistory, Rune, RuneReading
-from .ai_utils import generate_tarot_prediction
+from .ai_utils import generate_tarot_prediction, generate_rune_prediction
 
-
-@login_required
-def dashboard(request):
-    return render(request, 'main/dashboard.html')
-
-
-# ======= КАРТА ДНЯ =======
 
 @login_required
 def card_of_the_day(request):
     today = timezone.now().date()
     user = request.user
 
-    # Перевіряємо, чи є вже карта для сьогодні
-    prediction = ReadingHistory.objects.filter(user=user, drawn_at__date=today).first()
-
-    already_drawn = prediction is not None
+    try:
+        prediction = ReadingHistory.objects.get(user=user, drawn_at__date=today)
+        already_drawn = True
+    except ReadingHistory.DoesNotExist:
+        prediction = None
+        already_drawn = False
 
     if request.method == 'POST' and not already_drawn:
         card = random.choice(TarotCard.objects.all())
         is_reversed = random.choice([True, False])
-
         short_description = card.short_description_reversed if is_reversed else card.short_description
         full_description = card.full_description_reversed if is_reversed else card.full_description
 
         ai_prediction = generate_tarot_prediction(card.name, full_description, is_reversed)
 
+        # Створюємо запис в історії
         prediction = ReadingHistory.objects.create(
             user=user,
             card=card,
@@ -55,16 +52,6 @@ def card_of_the_day(request):
     return render(request, 'main/card_of_the_day.html', context)
 
 
-# ======= ІСТОРІЯ КАРТ =======
-
-@login_required
-def reading_history(request):
-    history = ReadingHistory.objects.filter(user=request.user).order_by('-drawn_at')
-    return render(request, 'main/reading_history.html', {'history': history})
-
-
-# ======= РУНА ДНЯ =======
-
 @login_required
 def rune_of_the_day(request):
     user = request.user
@@ -81,15 +68,25 @@ def rune_of_the_day(request):
         rune = random.choice(Rune.objects.all())
         is_reversed = random.choice([True, False])
         full_text = rune.full_description_reversed if is_reversed else rune.full_description
-        ai_prediction = f"Руна {rune.name} {'(перевернута)' if is_reversed else ''}: {full_text}"
 
-        reading = RuneReading.objects.create(
+        ai_prediction = generate_rune_prediction(rune.name, full_text, is_reversed)
+
+        RuneReading.objects.create(
             user=user,
             rune=rune,
             is_reversed=is_reversed,
             ai_prediction=ai_prediction
         )
         already_drawn = True
+
+    # DEBUG
+    print("=== DEBUG RUNE ===")
+    print("Rune:", rune.name)
+    print("Is reversed:", is_reversed)
+    print("Short desc:", rune.short_description_reversed if is_reversed else rune.short_description)
+    print("Full desc:", rune.full_description_reversed if is_reversed else rune.full_description)
+    print("AI prediction:", ai_prediction)
+    print("Already drawn:", already_drawn)
 
     return render(request, 'main/rune_of_the_day.html', {
         'rune': rune,
@@ -101,9 +98,12 @@ def rune_of_the_day(request):
     })
 
 
-# ======= ІСТОРІЯ РУН =======
+@login_required
+def dashboard(request):
+    return render(request, 'main/dashboard.html')
+
 
 @login_required
-def rune_history(request):
-    history = RuneReading.objects.filter(user=request.user).order_by('-drawn_at')
-    return render(request, 'main/rune_history.html', {'history': history})
+def reading_history(request):
+    history = ReadingHistory.objects.filter(user=request.user).order_by('-drawn_at')
+    return render(request, 'main/reading_history.html', {'history': history})
